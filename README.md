@@ -199,3 +199,22 @@ class Solution {
         return dp[n];
     }
 }
+# DFS of Graph
+class Solution {
+    public ArrayList<Integer> dfs(ArrayList<ArrayList<Integer>> adj) {
+        boolean[] vis=new boolean[adj.size()];
+        Arrays.fill(vis,false);
+        ArrayList<Integer> res=new ArrayList<>();
+        dfsHelper(adj,vis,res,0);
+        return res;
+    }
+    public void dfsHelper(ArrayList<ArrayList<Integer>> adj, boolean[] vis,ArrayList<Integer> res,int src){
+        if(vis[src]==false){
+            vis[src]=true;
+            res.add(src);
+            for(int i:adj.get(src)){
+                dfsHelper(adj,vis,res,i);
+            }
+        }
+    }
+}
